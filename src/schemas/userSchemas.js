@@ -2,17 +2,17 @@ const joi = require('joi');
 
 const signUp = joi.object({
     email: joi.string().email().required(),
-    username: Joi.string().alphanum().min(3).max(15).required(),
-    password: Joi.string().min(3).max(18).required(),
-    passwordConfirmation: Joi.ref('password')
+    username: joi.string().alphanum().min(3).max(15).required(),
+    password: joi.string().min(3).max(18).required(),
+    passwordConfirmation: joi.ref('password')
 });
 
-const signIn = Joi.object({
-    email: Joi.string().email().required(),
-    password: Joi.string().required(),
+const signIn = joi.object({
+    email: joi.string().email().required(),
+    password: joi.string().required(),
 });
 
 module.exports = {
     signUp,
     signIn
-}; 
+};
