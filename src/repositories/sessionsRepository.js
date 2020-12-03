@@ -22,7 +22,16 @@ async function findByToken(token) {
     return connection.query('SELECT * FROM sessions WHERE token=$1', [token]);
 }
 
+async function endSession(userId) {
+    try {
+        await connection.query('DELETE FROM sessions WHERE "userId"=$1', [userId]);
+    } catch {
+        return null;
+    }
+}
+
 module.exports = { 
     createSession,
-    findByToken
+    findByToken,
+    endSession
 };

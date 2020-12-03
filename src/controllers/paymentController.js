@@ -19,8 +19,8 @@ async function getBalance(req, res) {
     const response = await getBalanceById(userId);
     if(response === null);
 
-    const accountMovement = response.rows[0];
-    res.send(accountMovement).status(200);
+    const account = response.rows;
+    res.send(account).status(200);
 }
 
 module.exports = {

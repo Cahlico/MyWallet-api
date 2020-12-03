@@ -13,6 +13,7 @@ app.use(express.json());
 // User Routes
 app.post('/api/sign_up', usersController.postSignUp);
 app.post('/api/sign_in', usersController.postSignIn);
+app.delete('/api/sessions', authMiddleware, usersController.logout)
 
 // Payment Routes
 app.post('/api/payment', authMiddleware, paymentController.moveAccount);
