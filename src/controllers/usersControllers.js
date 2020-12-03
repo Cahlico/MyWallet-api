@@ -40,7 +40,7 @@ async function postSignIn(req, res) {
     return res.send(userData).status(200);
 }
 
-async function logout() {
+async function logout(req, res) {
     const { userId } =  req.session;
 
     const response = await endSession(userId);
