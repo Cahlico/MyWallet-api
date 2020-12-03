@@ -1,6 +1,6 @@
 const userSchemas = require('../schemas/userSchemas');
-const { isEmailAvailable, createUser, findUser } = require('../repositories/userRepositories');
-const { createSession } = require('../repositories/sessionsRepositories');
+const { isEmailAvailable, createUser, findUser } = require('../repositories/userRepository');
+const { createSession } = require('../repositories/sessionsRepository');
 
 async function postSignUp(req, res) {
     const userParams = req.body;
@@ -34,7 +34,6 @@ async function postSignIn(req, res) {
     if(result === null) return res.status(500).send('erro interno do sistema');
 
     const { token, email, id, userId } = result.rows[0];
-    console.log(result.rows[0]);
 
     const userData = { email, id, userId, token };
 

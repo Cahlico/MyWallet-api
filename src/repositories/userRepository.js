@@ -34,8 +34,13 @@ async function findUser(email, password) {
     }
 }
 
+async function findById(id) {
+    return connection.query(`SELECT * FROM users WHERE id=$1`, [id]);
+}
+
 module.exports = {
     isEmailAvailable,
     createUser,
-    findUser
+    findUser,
+    findById
 };

@@ -1,11 +1,8 @@
-const bcrypt = require('bcrypt');
 const uuid = require('uuid');
 const connection = require('../database');
 
 async function createSession(user) {
     const token = uuid.v4();
-    console.log(user)
-    console.log(token)
 
     const { email, id, password } = user;
     try {
@@ -21,6 +18,11 @@ async function createSession(user) {
     }
 }
 
+async function findByToken(token) {
+    return connection.query('SELECT * FROM sessions WHERE token=$1', [token]);
+}
+
 module.exports = { 
-    createSession
+    createSession,
+    findByToken
 };
